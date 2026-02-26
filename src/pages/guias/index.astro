@@ -1,59 +1,54 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const guias = [
+const secciones = [
   {
-    slug: "#proximamente",
-    categoria: "Primeros Pasos",
-    titulo: "Cómo instalar el modpack",
-    descripcion: "Guía paso a paso para instalar Cobbleverse con todos los addons necesarios para conectarte al servidor.",
-    icon: "📦",
-    proximamente: true,
+    cat: "Gameplay",
+    guias: [
+      { href: "/guias/por-que-jugar", titulo: "¿Por qué jugar Cobbleverse?", desc: "Starters exclusivos, Mega Evolución, pueblos personalizados y la Liga Pokémon.", icon: "🌟" },
+      { href: "/guias/estructuras-exclusivas", titulo: "Estructuras exclusivas", desc: "Torre Rocket, Bell Tower, Pilar del Cielo, Jardín Secreto y más.", icon: "🏰" },
+      { href: "/guias/ganar-dinero", titulo: "Cómo ganar dinero", desc: "PokéDólares, CobbleMercaderes y Centros Comerciales.", icon: "💰" },
+      { href: "/guias/todos-los-pokemon", titulo: "Todos los Pokémon", desc: "Los 1025 Pokémon disponibles, con info sobre spawns y Legendarios.", icon: "📖" },
+    ],
   },
   {
-    slug: "#proximamente",
-    categoria: "Cobblemon",
-    titulo: "Tus primeros Pokémon",
-    descripcion: "Aprendé cómo encontrar, capturar y entrenar a tus primeros Pokémon en el mundo de Minecraft.",
-    icon: "🔴",
-    proximamente: true,
+    cat: "Tutoriales",
+    guias: [
+      { href: "/guias/habilitar-regiones", titulo: "Habilitar todas las regiones", desc: "Cómo desbloquear Johto, Hoenn y Sinnoh sin derrotar campeones.", icon: "🗺️" },
+      { href: "/guias/encontrar-gimnasios", titulo: "Cómo encontrar gimnasios", desc: "Mesa de Cartografía, Battle Seeker y comandos para localizar gimansios.", icon: "🏟️" },
+      { href: "/guias/atrapar-legendarios", titulo: "Atrapar Legendarios y Míticos", desc: "Dónde y cómo encontrar a Mew, Ho-Oh, Lugia, Celebi y más.", icon: "⚡" },
+      { href: "/guias/estructuras-legendarios", titulo: "Estructuras de Legendarios", desc: "Sistema de radares y Chip Localizador para encontrar estructuras.", icon: "📡" },
+      { href: "/guias/formas-especiales", titulo: "Formas especiales de Pokémon", desc: "Ash-Greninja, Pikachu de Ash, Zygarde y más formas únicas.", icon: "✨" },
+      { href: "/guias/items-especiales", titulo: "Dónde encontrar ítems especiales", desc: "Orbe Rojo, Núcleo del Cielo, Reliquias y objetos de invocación.", icon: "🧰" },
+    ],
   },
   {
-    slug: "#proximamente",
-    categoria: "Cobblemon",
-    titulo: "Sistema de batallas",
-    descripcion: "Todo lo que necesitás saber sobre el sistema de combate de Cobblemon: tipos, movimientos y estrategias.",
-    icon: "⚔️",
-    proximamente: true,
+    cat: "Problemas comunes",
+    guias: [
+      { href: "/guias/problemas-comunes", titulo: "Preguntas frecuentes", desc: "Modelos faltantes, drops de mobs, mapas, Modrinth y nivel 25.", icon: "❓" },
+    ],
   },
   {
-    slug: "#proximamente",
-    categoria: "Servidor",
-    titulo: "Reglas del servidor",
-    descripcion: "Las normas de convivencia del servidor para que todos puedan disfrutar de una buena experiencia.",
-    icon: "📜",
-    proximamente: true,
+    cat: "Líderes de Gimnasio",
+    guias: [
+      { href: "/guias/items-firma", titulo: "Ítems firma de los líderes", desc: "Cómo usarlos para invocar líderes y conseguir mapas.", icon: "🎯" },
+      { href: "/guias/lideres-kanto", titulo: "Líderes de Kanto [K]", desc: "Los primeros 8 gimnasios. Derrotalos para desbloquear Johto.", icon: "🔴" },
+      { href: "/guias/lideres-johto", titulo: "Líderes de Johto [J]", desc: "Segunda región. Se desbloquea tras derrotar a Blue.", icon: "🌿" },
+      { href: "/guias/lideres-hoenn", titulo: "Líderes de Hoenn [H]", desc: "Tercera región. Se desbloquea tras derrotar a Lance.", icon: "🌊" },
+      { href: "/guias/lideres-sinnoh", titulo: "Líderes de Sinnoh [S]", desc: "Cuarta región. Se desbloquea tras derrotar a Rocco.", icon: "❄️" },
+      { href: "/guias/lideres-unova", titulo: "Líderes de Unova [U]", desc: "Quinta región. En desarrollo por el equipo de Cobbleverse.", icon: "🚧" },
+    ],
   },
   {
-    slug: "#proximamente",
-    categoria: "Minecraft",
-    titulo: "Comandos útiles",
-    descripcion: "Lista de comandos del servidor para teletransportarte, ver el inventario y más.",
-    icon: "⌨️",
-    proximamente: true,
-  },
-  {
-    slug: "#proximamente",
-    categoria: "Cobblemon",
-    titulo: "Pokémon disponibles",
-    descripcion: "Listado completo de los Pokémon que podés encontrar en el servidor con sus localizaciones.",
-    icon: "📖",
-    proximamente: true,
+    cat: "Configuración",
+    guias: [
+      { href: "/guias/configuracion", titulo: "Ajustes del modpack", desc: "Camera Roll, hambre, mobs, Rayquaza en el End y más.", icon: "⚙️" },
+    ],
   },
 ];
 ---
 
-<Layout title="Guías" description="Guías y tutoriales para Pokecraft Argentina. Aprendé a instalar el modpack, capturar Pokémon y más.">
+<Layout title="Guías" description="Guías y tutoriales para Pokecraft Argentina. Aprendé todo sobre Cobbleverse, gimnasios, legendarios y más.">
 
   <div class="page-header">
     <div class="container">
@@ -67,39 +62,28 @@ const guias = [
       </h1>
       <p class="page-subtitle">
         Todo lo que necesitás saber para jugar en Pokecraft Argentina.
-        Desde instalar el modpack hasta convertirte en Maestro Pokémon.
+        Desde los primeros pasos hasta convertirte en Maestro Pokémon.
       </p>
     </div>
   </div>
 
   <section class="section">
     <div class="container">
-
-      <div class="coming-soon-banner">
-        <span class="banner-icon">🚧</span>
-        <div>
-          <strong>¡Guías en camino!</strong>
-          <p>Estamos preparando contenido detallado para ayudarte. Mientras tanto, unite al Discord para obtener ayuda de la comunidad.</p>
-        </div>
-        <a href="https://discord.gg/HtheWa3T" target="_blank" rel="noopener" class="btn btn-discord">
-          Ir al Discord
-        </a>
-      </div>
-
-      <div class="guides-grid">
-        {guias.map((guia) => (
-          <div class="guide-card">
-            <div class="guide-header">
-              <span class="guide-categoria">{guia.categoria}</span>
-              {guia.proximamente && <span class="guide-badge">Próximamente</span>}
-            </div>
-            <div class="guide-icon">{guia.icon}</div>
-            <h3 class="guide-title">{guia.titulo}</h3>
-            <p class="guide-desc">{guia.descripcion}</p>
+      {secciones.map((seccion) => (
+        <div class="seccion">
+          <h2 class="seccion-titulo">{seccion.cat}</h2>
+          <div class="guides-grid">
+            {seccion.guias.map((guia) => (
+              <a href={guia.href} class="guide-card">
+                <div class="guide-icon">{guia.icon}</div>
+                <h3 class="guide-title">{guia.titulo}</h3>
+                <p class="guide-desc">{guia.desc}</p>
+                <span class="guide-arrow">Leer guía →</span>
+              </a>
+            ))}
           </div>
-        ))}
-      </div>
-
+        </div>
+      ))}
     </div>
   </section>
 
@@ -131,9 +115,7 @@ const guias = [
     transition: opacity 0.2s;
   }
 
-  .breadcrumb a:hover {
-    opacity: 0.8;
-  }
+  .breadcrumb a:hover { opacity: 0.8; }
 
   .page-title {
     font-size: clamp(1.8rem, 5vw, 3rem);
@@ -158,121 +140,65 @@ const guias = [
     padding: 4rem 1.5rem;
   }
 
-  .coming-soon-banner {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    background: rgba(251, 191, 36, 0.06);
-    border: 1px solid rgba(251, 191, 36, 0.25);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
+  .seccion {
+    margin-bottom: 3.5rem;
   }
 
-  .banner-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  .coming-soon-banner > div {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .coming-soon-banner strong {
-    font-size: 0.95rem;
-    display: block;
-    margin-bottom: 0.25rem;
-    color: var(--yellow);
-  }
-
-  .coming-soon-banner p {
-    font-size: 0.85rem;
+  .seccion-titulo {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.65rem 1.25rem;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .btn-discord {
-    background: var(--discord);
-    color: white;
-  }
-
-  .btn-discord:hover {
-    background: #4752c4;
-    transform: translateY(-1px);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
   }
 
   .guides-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
   }
 
   .guide-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.75rem;
+    padding: 1.5rem;
     transition: border-color 0.2s, transform 0.2s;
-    opacity: 0.7;
-  }
-
-  .guide-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
-  .guide-categoria {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--green);
-    font-weight: 600;
-  }
-
-  .guide-badge {
-    font-size: 0.65rem;
-    background: rgba(251, 191, 36, 0.1);
-    border: 1px solid rgba(251, 191, 36, 0.3);
-    color: var(--yellow);
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 600;
+  .guide-card:hover {
+    border-color: var(--green);
+    transform: translateY(-2px);
   }
 
   .guide-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
   }
 
   .guide-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
     color: var(--text);
   }
 
   .guide-desc {
-    font-size: 0.875rem;
+    font-size: 0.825rem;
     color: var(--text-muted);
     line-height: 1.6;
+    flex: 1;
+  }
+
+  .guide-arrow {
+    font-size: 0.8rem;
+    color: var(--green);
+    margin-top: 0.5rem;
+    font-weight: 500;
   }
 </style>

@@ -80,8 +80,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="step-number">02</div>
           <div class="step-content">
             <h3>Descargá el Modpack</h3>
-            <p>Entrá al Discord del servidor para conseguir el link de descarga del <strong>pack Cobbleverse</strong>
-            con todos los addons preconfigurados y listos para jugar.</p>
+            <p>Descargá los mods directamente desde <a href="https://www.mediafire.com/folder/mbefld92q9fxk/Mods_%2B_Sharders" target="_blank" rel="noopener" class="link-green">este link de MediaFire</a> y colocá los archivos en tu carpeta <code>.minecraft/mods</code>. También podés pedir ayuda en el Discord.</p>
           </div>
         </div>
         <div class="step">
@@ -409,6 +408,22 @@ function copyIP() {
 
   .step-content strong {
     color: var(--green);
+  }
+
+  .link-green {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .step-content code {
+    font-family: monospace;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: var(--yellow);
   }
 
   /* IP BOX */

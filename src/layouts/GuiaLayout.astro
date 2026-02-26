@@ -1,0 +1,395 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  categoria: string;
+  descripcion?: string;
+}
+
+const { title, categoria, descripcion } = Astro.props;
+
+const menu = [
+  {
+    cat: "Gameplay",
+    items: [
+      { label: "¿Por qué jugar Cobbleverse?", href: "/guias/por-que-jugar" },
+      { label: "Estructuras exclusivas", href: "/guias/estructuras-exclusivas" },
+      { label: "Cómo ganar dinero", href: "/guias/ganar-dinero" },
+      { label: "Todos los Pokémon", href: "/guias/todos-los-pokemon" },
+    ],
+  },
+  {
+    cat: "Tutoriales",
+    items: [
+      { label: "Habilitar todas las regiones", href: "/guias/habilitar-regiones" },
+      { label: "Cómo encontrar gimnasios", href: "/guias/encontrar-gimnasios" },
+      { label: "Atrapar Legendarios y Míticos", href: "/guias/atrapar-legendarios" },
+      { label: "Estructuras de Legendarios", href: "/guias/estructuras-legendarios" },
+      { label: "Formas especiales de Pokémon", href: "/guias/formas-especiales" },
+      { label: "Dónde encontrar ítems especiales", href: "/guias/items-especiales" },
+    ],
+  },
+  {
+    cat: "Problemas comunes",
+    items: [
+      { label: "Preguntas frecuentes", href: "/guias/problemas-comunes" },
+    ],
+  },
+  {
+    cat: "Líderes de Gimnasio",
+    items: [
+      { label: "Ítems firma de los líderes", href: "/guias/items-firma" },
+      { label: "Líderes de Kanto [K]", href: "/guias/lideres-kanto" },
+      { label: "Líderes de Johto [J]", href: "/guias/lideres-johto" },
+      { label: "Líderes de Hoenn [H]", href: "/guias/lideres-hoenn" },
+      { label: "Líderes de Sinnoh [S]", href: "/guias/lideres-sinnoh" },
+      { label: "Líderes de Unova [U]", href: "/guias/lideres-unova" },
+    ],
+  },
+  {
+    cat: "Configuración",
+    items: [
+      { label: "Ajustes del modpack", href: "/guias/configuracion" },
+    ],
+  },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<Layout title={title} description={descripcion}>
+  <div class="guia-wrapper">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="/guias" class="sidebar-logo">📖 Guías Cobbleverse</a>
+      </div>
+      <nav class="sidebar-nav">
+        {menu.map((section) => (
+          <div class="nav-section">
+            <span class="nav-cat">{section.cat}</span>
+            <ul>
+              {section.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class={currentPath === item.href ? 'active' : ''}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </aside>
+
+    <div class="guia-main">
+      <div class="guia-header">
+        <div class="breadcrumb">
+          <a href="/">Inicio</a>
+          <span>›</span>
+          <a href="/guias">Guías</a>
+          <span>›</span>
+          <span>{categoria}</span>
+        </div>
+        <h1 class="guia-title">{title}</h1>
+        <div class="source-note">
+          Contenido basado en la wiki oficial de <a href="https://www.lumyverse.com/en/cobbleverse/" target="_blank" rel="noopener">Lumyverse / Cobbleverse</a>
+        </div>
+      </div>
+
+      <article class="guia-content">
+        <slot />
+      </article>
+
+      <div class="guia-footer">
+        <a href="/guias" class="back-link">← Volver a Guías</a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .guia-wrapper {
+    display: flex;
+    min-height: calc(100vh - 64px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    gap: 2rem;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    padding: 2rem 0;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-logo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--green);
+    transition: opacity 0.2s;
+  }
+
+  .sidebar-logo:hover {
+    opacity: 0.8;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-section ul {
+    list-style: none;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .nav-cat {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .nav-section a {
+    display: block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-radius: 6px;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-section a:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  .nav-section a.active {
+    color: var(--green);
+    background: rgba(74, 222, 128, 0.08);
+    border-left-color: var(--green);
+  }
+
+  /* MAIN CONTENT */
+  .guia-main {
+    flex: 1;
+    min-width: 0;
+    padding: 2rem 0 4rem;
+  }
+
+  .guia-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumb a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--green);
+  }
+
+  .guia-title {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .source-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .source-note a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ARTICLE STYLES */
+  .guia-content {
+    line-height: 1.8;
+  }
+
+  .guia-content :global(h2) {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 2rem 0 0.75rem;
+    color: var(--text);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .guia-content :global(h3) {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+    color: var(--green);
+  }
+
+  .guia-content :global(p) {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .guia-content :global(strong) {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .guia-content :global(ul),
+  .guia-content :global(ol) {
+    margin: 0.75rem 0 1rem 1.5rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .guia-content :global(li) {
+    line-height: 1.7;
+  }
+
+  .guia-content :global(code) {
+    font-family: monospace;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875em;
+    color: var(--yellow);
+  }
+
+  .guia-content :global(blockquote) {
+    border-left: 3px solid var(--green);
+    padding: 0.75rem 1.25rem;
+    background: rgba(74, 222, 128, 0.05);
+    border-radius: 0 8px 8px 0;
+    margin: 1.25rem 0;
+    color: var(--text-muted);
+  }
+
+  .guia-content :global(.info-box) {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .guia-content :global(.warn-box) {
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .guia-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .guia-content :global(th) {
+    background: var(--surface);
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .guia-content :global(td) {
+    padding: 0.6rem 1rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .guia-content :global(tr:hover td) {
+    background: var(--surface);
+  }
+
+  /* FOOTER */
+  .guia-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .back-link {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--green);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .guia-wrapper {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+      overflow: visible;
+      padding: 1.5rem 0 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    .sidebar-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+  }
+</style>
