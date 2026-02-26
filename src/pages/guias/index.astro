@@ -1,0 +1,278 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const guias = [
+  {
+    slug: "#proximamente",
+    categoria: "Primeros Pasos",
+    titulo: "Cómo instalar el modpack",
+    descripcion: "Guía paso a paso para instalar Cobbleverse con todos los addons necesarios para conectarte al servidor.",
+    icon: "📦",
+    proximamente: true,
+  },
+  {
+    slug: "#proximamente",
+    categoria: "Cobblemon",
+    titulo: "Tus primeros Pokémon",
+    descripcion: "Aprendé cómo encontrar, capturar y entrenar a tus primeros Pokémon en el mundo de Minecraft.",
+    icon: "🔴",
+    proximamente: true,
+  },
+  {
+    slug: "#proximamente",
+    categoria: "Cobblemon",
+    titulo: "Sistema de batallas",
+    descripcion: "Todo lo que necesitás saber sobre el sistema de combate de Cobblemon: tipos, movimientos y estrategias.",
+    icon: "⚔️",
+    proximamente: true,
+  },
+  {
+    slug: "#proximamente",
+    categoria: "Servidor",
+    titulo: "Reglas del servidor",
+    descripcion: "Las normas de convivencia del servidor para que todos puedan disfrutar de una buena experiencia.",
+    icon: "📜",
+    proximamente: true,
+  },
+  {
+    slug: "#proximamente",
+    categoria: "Minecraft",
+    titulo: "Comandos útiles",
+    descripcion: "Lista de comandos del servidor para teletransportarte, ver el inventario y más.",
+    icon: "⌨️",
+    proximamente: true,
+  },
+  {
+    slug: "#proximamente",
+    categoria: "Cobblemon",
+    titulo: "Pokémon disponibles",
+    descripcion: "Listado completo de los Pokémon que podés encontrar en el servidor con sus localizaciones.",
+    icon: "📖",
+    proximamente: true,
+  },
+];
+---
+
+<Layout title="Guías" description="Guías y tutoriales para Pokecraft Argentina. Aprendé a instalar el modpack, capturar Pokémon y más.">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        <span>›</span>
+        <span>Guías</span>
+      </div>
+      <h1 class="page-title">
+        <span class="pixel-accent">Guías</span>
+      </h1>
+      <p class="page-subtitle">
+        Todo lo que necesitás saber para jugar en Pokecraft Argentina.
+        Desde instalar el modpack hasta convertirte en Maestro Pokémon.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="coming-soon-banner">
+        <span class="banner-icon">🚧</span>
+        <div>
+          <strong>¡Guías en camino!</strong>
+          <p>Estamos preparando contenido detallado para ayudarte. Mientras tanto, unite al Discord para obtener ayuda de la comunidad.</p>
+        </div>
+        <a href="https://discord.gg/HtheWa3T" target="_blank" rel="noopener" class="btn btn-discord">
+          Ir al Discord
+        </a>
+      </div>
+
+      <div class="guides-grid">
+        {guias.map((guia) => (
+          <div class="guide-card">
+            <div class="guide-header">
+              <span class="guide-categoria">{guia.categoria}</span>
+              {guia.proximamente && <span class="guide-badge">Próximamente</span>}
+            </div>
+            <div class="guide-icon">{guia.icon}</div>
+            <h3 class="guide-title">{guia.titulo}</h3>
+            <p class="guide-desc">{guia.descripcion}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-header {
+    padding: 5rem 1.5rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, rgba(74, 222, 128, 0.04), transparent);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--green);
+    transition: opacity 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .page-title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .pixel-accent {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(1rem, 3vw, 1.8rem);
+    color: var(--green);
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  .section {
+    padding: 4rem 1.5rem;
+  }
+
+  .coming-soon-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .banner-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .coming-soon-banner > div {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .coming-soon-banner strong {
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--yellow);
+  }
+
+  .coming-soon-banner p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .btn-discord {
+    background: var(--discord);
+    color: white;
+  }
+
+  .btn-discord:hover {
+    background: #4752c4;
+    transform: translateY(-1px);
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .guide-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    opacity: 0.7;
+  }
+
+  .guide-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .guide-categoria {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .guide-badge {
+    font-size: 0.65rem;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: var(--yellow);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .guide-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .guide-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .guide-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+</style>
